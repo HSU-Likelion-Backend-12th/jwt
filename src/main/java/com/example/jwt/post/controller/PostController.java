@@ -18,13 +18,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class PostController {
 
     private final PostService postService;
-//    private final AuthenticationUserUtils userUtils;
+    private final AuthenticationUserUtils userUtils;
 
     @PostMapping
     public ResponseEntity<?> create(@RequestBody @Valid CreatePostReq dto) {
-//        String currentUserId = userUtils.getCurrentUserId();
-//        CreatePostRes result = postService.create(dto, currentUserId);
-//        return ResponseEntity.ok(result);
-        return null;
+        String currentUserId = userUtils.getCurrentUserId();
+        CreatePostRes result = postService.create(dto, currentUserId);
+        return ResponseEntity.ok(result);
+//        return null;
     }
 }
